@@ -39,8 +39,12 @@ function isPastBookingDate(date: string) {
 }
 
 export function ReservationCard({ reservation, onCancel }: Props) {
+  // const isCancelled = reservation.status === "cancelled";
+  // const isPastDate = isPastBookingDate(reservation.booking_date);
+
   const isCancelled = reservation.status === "cancelled";
   const isPastDate = isPastBookingDate(reservation.booking_date);
+  const isCompleted = !isCancelled && isPastDate;
 
   return (
     <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white">
@@ -100,11 +104,23 @@ export function ReservationCard({ reservation, onCancel }: Props) {
                 "shrink-0 rounded-full px-2.5 py-1 text-[10px] font-semibold",
                 isCancelled
                   ? "bg-red-100 text-red-600"
+                  : isCompleted
+                    ? "bg-neutral-100 text-neutral-600"
+                    : "bg-green-100 text-green-700",
+              ].join(" ")}
+            >
+              {isCancelled ? "Cancelled" : isCompleted ? "Completed" : "Active"}
+            </span>
+            {/* <span
+              className={[
+                "shrink-0 rounded-full px-2.5 py-1 text-[10px] font-semibold",
+                isCancelled
+                  ? "bg-red-100 text-red-600"
                   : "bg-green-100 text-green-700",
               ].join(" ")}
             >
               {isCancelled ? "Cancelled" : "Active"}
-            </span>
+            </span> */}
           </div>
 
           {/* DETAILS */}

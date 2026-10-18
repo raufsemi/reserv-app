@@ -3,7 +3,6 @@
 import { bookerService } from "@/features/services/booker.service";
 import { reservationService } from "@/features/services/reservation.service";
 import { getUserProfile } from "@/lib/auth";
-import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { ReservationCard } from "./components/ReservationCard";
 import { PublicFooter } from "@/features/shared/PublicFooter";
@@ -27,8 +26,6 @@ type Reservation = {
 };
 
 export default function BookingHistoryPage() {
-  const router = useRouter();
-
   const [reservations, setReservations] = useState<Reservation[]>([]);
   const [loading, setLoading] = useState(true);
   const [cancelId, setCancelId] = useState<string | null>(null);
@@ -87,22 +84,6 @@ export default function BookingHistoryPage() {
   return (
     <div className="min-h-screen bg-linear-to-b from-white via-purple-50/30 to-white flex justify-center px-4 py-8">
       <div className="w-full max-w-2xl">
-        {/* TABS */}
-        {/* <div className="mb-6 border-b border-purple-100">
-          <nav className="flex space-x-6">
-            <button
-              onClick={() => router.push("/booking")}
-              className="text-gray-400 pb-4 text-sm font-medium hover:text-accent transition"
-            >
-              Tempahan
-            </button>
-
-            <button className="border-b-2 border-accent pb-4 text-sm font-semibold text-accent">
-              Sejarah
-            </button>
-          </nav>
-        </div> */}
-
         <div className="rounded-xl border border-yellow-200 bg-yellow-50 p-4 mb-5">
           {/* title */}
           <div className="font-semibold text-yellow-800">Notis penting</div>
@@ -113,23 +94,6 @@ export default function BookingHistoryPage() {
             sebarang isu atau laporan berkaitan sistem tempahan, sila hubungi
             pihak pentadbiran dengan segera.
           </div>
-
-          {/* <div className="mt-3 flex flex-col sm:flex-row gap-2">
-            <a
-              href="https://forms.gle/TYvA78S2HC5FGACAA"
-              target="_blank"
-              className="inline-flex items-center justify-center rounded-lg bg-yellow-500 px-3 py-2 text-sm font-semibold text-white hover:bg-yellow-600 transition"
-            >
-              Hantar Laporan
-            </a>
-            <a
-              href="https://wa.me/601127374120"
-              target="_blank"
-              className="inline-flex items-center justify-center rounded-lg border border-yellow-300 bg-white px-3 py-2 text-sm font-semibold text-yellow-700 hover:bg-yellow-100 transition"
-            >
-              Hubungi Kami
-            </a>
-          </div> */}
         </div>
 
         {/* HEADER */}

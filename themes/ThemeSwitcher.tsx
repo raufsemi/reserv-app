@@ -47,7 +47,7 @@ export function ThemeSwitcher() {
           <Button
             isIconOnly
             variant="secondary"
-            className="h-auto min-w-0 rounded-none border-b-2 border-transparent bg-transparent px-1 pb-4 text-gray-400 hover:bg-transparent hover:text-accent"
+            className="h-9 min-w-0 rounded-md border-b-2 border-transparent bg-transparent px-2 text-gray-400 hover:bg-transparent hover:text-accent"
           >
             <Palette className="h-4 w-4" />
           </Button>
